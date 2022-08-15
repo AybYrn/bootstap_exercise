@@ -7,6 +7,7 @@ import React from "react";
 
 function App() {
   const [count, setCount] = React.useState(0);
+  const [starWars, setStarWars] = React.useState({});
 
   function handleClick() {
     setCount((prevData) => {
@@ -14,9 +15,14 @@ function App() {
     });
   }
   console.log("component rendered");
-  React.useEffect(function () {
-    console.log("useEffect rendered");
-  });
+  React.useEffect(
+    function () {
+      fetch("https://swapi.dev/api/people/1")
+        .then((res) => res.json())
+        .then((data) => setStarWars(data));
+    },
+    [count]
+  );
 
   return (
     <div className="App">
@@ -24,6 +30,7 @@ function App() {
         <Card>
           <h3 className="header">The Count is : {count} </h3>
           <Button onClick={handleClick}>COUNT</Button>
+          <p>{JSON.stringify(starWars, null, 2)}</p>
         </Card>
       </Container>
     </div>
