@@ -17,7 +17,7 @@ function App() {
   console.log("component rendered");
   React.useEffect(
     function () {
-      fetch("https://swapi.dev/api/people/1")
+      fetch(`https://swapi.dev/api/people/${count}`)
         .then((res) => res.json())
         .then((data) => setStarWars(data));
     },
