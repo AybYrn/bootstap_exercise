@@ -28,7 +28,7 @@ function App() {
     <div className="App">
       <Container>
         <Card>
-          <h3 className="header">The Count is : {count} </h3>
+          <h3>The Count is : {count} </h3>
           <Button onClick={handleClick}>COUNT</Button>
           <p>{JSON.stringify(starWars, null, 2)}</p>
         </Card>
